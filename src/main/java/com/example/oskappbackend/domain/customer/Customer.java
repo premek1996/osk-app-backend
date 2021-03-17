@@ -2,7 +2,7 @@ package com.example.oskappbackend.domain.customer;
 
 import com.example.oskappbackend.domain.drivingclass.DrivingClass;
 import com.example.oskappbackend.domain.payment.Payment;
-import com.example.oskappbackend.domain.theoreticalcourse.TheoreticalCourse;
+import com.example.oskappbackend.domain.theoreticalcoursegroup.TheoreticalCourseParticipation;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -14,8 +14,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import java.util.Set;
@@ -51,7 +49,8 @@ public class Customer {
     @OneToMany(mappedBy = "customer")
     private Set<DrivingClass> drivingClasses;
 
-    @ManyToMany
-    private Set<TheoreticalCourse> theoreticalCourses;
+    @JsonManagedReference
+    @OneToMany(mappedBy = "customer")
+    private Set<TheoreticalCourseParticipation> theoreticalCourseParticipation;
 
 }

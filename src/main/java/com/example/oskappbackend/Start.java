@@ -15,6 +15,8 @@ import com.example.oskappbackend.domain.theoreticalclass.TheoreticalClass;
 import com.example.oskappbackend.domain.theoreticalclass.TheoreticalClassService;
 import com.example.oskappbackend.domain.theoreticalcourse.TheoreticalCourse;
 import com.example.oskappbackend.domain.theoreticalcourse.TheoreticalCourseService;
+import com.example.oskappbackend.domain.theoreticalcoursegroup.TheoreticalCourseParticipation;
+import com.example.oskappbackend.domain.theoreticalcoursegroup.TheoreticalCourseParticipationService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.event.EventListener;
@@ -34,6 +36,7 @@ public class Start {
     private final TheoreticalCourseService theoreticalCourseService;
     private final TheoreticalClassService theoreticalClassService;
     private final DrivingClassService drivingClassService;
+    private final TheoreticalCourseParticipationService theoreticalCourseParticipationService;
 
     @EventListener(ApplicationReadyEvent.class)
     public void init() {
@@ -97,6 +100,12 @@ public class Start {
                 .endTime(LocalDateTime.now())
                 .build();
         drivingClassService.createDrivingClass(drivingClass);
+
+        TheoreticalCourseParticipation theoreticalCourseParticipation = TheoreticalCourseParticipation.builder()
+                .customer(customer)
+                .theoreticalCourse(theoreticalCourse)
+                .build();
+        theoreticalCourseParticipationService.createTheoreticalCourseParticipation(theoreticalCourseParticipation);
 
     }
 
