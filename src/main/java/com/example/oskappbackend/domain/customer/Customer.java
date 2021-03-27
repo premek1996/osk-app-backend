@@ -1,8 +1,9 @@
 package com.example.oskappbackend.domain.customer;
 
+import com.example.oskappbackend.domain.courseparticipation.CourseParticipation;
 import com.example.oskappbackend.domain.drivingclass.DrivingClass;
 import com.example.oskappbackend.domain.payment.Payment;
-import com.example.oskappbackend.domain.theoreticalcoursegroup.TheoreticalCourseParticipation;
+import com.example.oskappbackend.domain.theoreticalcourseparticipation.TheoreticalCourseParticipation;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -47,10 +48,15 @@ public class Customer {
 
     @JsonManagedReference
     @OneToMany(mappedBy = "customer")
-    private Set<DrivingClass> drivingClasses;
+    private Set<CourseParticipation> courseParticipation;
 
     @JsonManagedReference
     @OneToMany(mappedBy = "customer")
     private Set<TheoreticalCourseParticipation> theoreticalCourseParticipation;
+
+
+    @JsonManagedReference
+    @OneToMany(mappedBy = "customer")
+    private Set<DrivingClass> drivingClasses;
 
 }

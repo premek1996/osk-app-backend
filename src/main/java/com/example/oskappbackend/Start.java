@@ -3,6 +3,8 @@ package com.example.oskappbackend;
 import com.example.oskappbackend.domain.course.Category;
 import com.example.oskappbackend.domain.course.Course;
 import com.example.oskappbackend.domain.course.CourseService;
+import com.example.oskappbackend.domain.courseparticipation.CourseParticipation;
+import com.example.oskappbackend.domain.courseparticipation.CourseParticipationService;
 import com.example.oskappbackend.domain.customer.Customer;
 import com.example.oskappbackend.domain.customer.CustomerService;
 import com.example.oskappbackend.domain.drivingclass.DrivingClass;
@@ -15,8 +17,8 @@ import com.example.oskappbackend.domain.theoreticalclass.TheoreticalClass;
 import com.example.oskappbackend.domain.theoreticalclass.TheoreticalClassService;
 import com.example.oskappbackend.domain.theoreticalcourse.TheoreticalCourse;
 import com.example.oskappbackend.domain.theoreticalcourse.TheoreticalCourseService;
-import com.example.oskappbackend.domain.theoreticalcoursegroup.TheoreticalCourseParticipation;
-import com.example.oskappbackend.domain.theoreticalcoursegroup.TheoreticalCourseParticipationService;
+import com.example.oskappbackend.domain.theoreticalcourseparticipation.TheoreticalCourseParticipation;
+import com.example.oskappbackend.domain.theoreticalcourseparticipation.TheoreticalCourseParticipationService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.event.EventListener;
@@ -37,6 +39,7 @@ public class Start {
     private final TheoreticalClassService theoreticalClassService;
     private final DrivingClassService drivingClassService;
     private final TheoreticalCourseParticipationService theoreticalCourseParticipationService;
+    private final CourseParticipationService courseParticipationService;
 
     @EventListener(ApplicationReadyEvent.class)
     public void init() {
@@ -76,6 +79,13 @@ public class Start {
                 .dateTime(LocalDateTime.now())
                 .build();
         paymentService.createPayment(payment);
+
+        CourseParticipation courseParticipation = CourseParticipation.builder()
+                .course(course)
+                .customer(customer)
+                .build();
+
+        courseParticipationService.createCourseParticipation(courseParticipation);
 
         TheoreticalCourse theoreticalCourse = TheoreticalCourse.builder()
                 .course(course)

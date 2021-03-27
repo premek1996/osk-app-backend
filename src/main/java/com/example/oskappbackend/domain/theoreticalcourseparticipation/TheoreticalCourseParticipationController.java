@@ -1,4 +1,4 @@
-package com.example.oskappbackend.domain.theoreticalcoursegroup;
+package com.example.oskappbackend.domain.theoreticalcourseparticipation;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;

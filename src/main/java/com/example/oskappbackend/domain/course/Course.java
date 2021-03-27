@@ -1,5 +1,6 @@
 package com.example.oskappbackend.domain.course;
 
+import com.example.oskappbackend.domain.courseparticipation.CourseParticipation;
 import com.example.oskappbackend.domain.drivingclass.DrivingClass;
 import com.example.oskappbackend.domain.payment.Payment;
 import com.example.oskappbackend.domain.theoreticalcourse.TheoreticalCourse;
@@ -49,6 +50,10 @@ public class Course {
     @JsonManagedReference
     @OneToMany(mappedBy = "course")
     private Set<Payment> payments;
+
+    @JsonManagedReference
+    @OneToMany(mappedBy = "course")
+    private Set<CourseParticipation> courseParticipation;
 
     @JsonManagedReference
     @OneToMany(mappedBy = "course")

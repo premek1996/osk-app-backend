@@ -3,7 +3,7 @@ package com.example.oskappbackend.domain.theoreticalcourse;
 import com.example.oskappbackend.domain.course.Course;
 import com.example.oskappbackend.domain.instructor.Instructor;
 import com.example.oskappbackend.domain.theoreticalclass.TheoreticalClass;
-import com.example.oskappbackend.domain.theoreticalcoursegroup.TheoreticalCourseParticipation;
+import com.example.oskappbackend.domain.theoreticalcourseparticipation.TheoreticalCourseParticipation;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.AllArgsConstructor;

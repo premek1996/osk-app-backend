@@ -1,4 +1,4 @@
-package com.example.oskappbackend.domain.theoreticalcoursegroup;
+package com.example.oskappbackend.domain.theoreticalcourseparticipation;
 
 import com.example.oskappbackend.domain.customer.Customer;
 import com.example.oskappbackend.domain.theoreticalcourse.TheoreticalCourse;
