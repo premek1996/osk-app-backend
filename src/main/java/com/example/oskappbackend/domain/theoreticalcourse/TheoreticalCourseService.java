@@ -2,9 +2,11 @@ package com.example.oskappbackend.domain.theoreticalcourse;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -18,6 +20,13 @@ public class TheoreticalCourseService {
 
     public Optional<TheoreticalCourse> getTheoreticalCourseById(Long id) {
         return theoreticalCourseRepository.findById(id);
+    }
+
+    public List<TheoreticalCourse> getTheoreticalCoursesByCourseId(@PathVariable Long courseId) {
+        return theoreticalCourseRepository.findAll()
+                .stream()
+                .filter(theoreticalCourse -> theoreticalCourse.getCourse().getId().equals(courseId))
+                .collect(Collectors.toList());
     }
 
     public TheoreticalCourse createTheoreticalCourse(TheoreticalCourse theoreticalCourse) {

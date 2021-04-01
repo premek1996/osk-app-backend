@@ -1,7 +1,7 @@
 package com.example.oskappbackend.domain.theoreticalclass;
 
 import com.example.oskappbackend.domain.theoreticalcourse.TheoreticalCourse;
-import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -33,7 +33,7 @@ public class TheoreticalClass {
 
     private LocalDateTime endTime;
 
-    @JsonBackReference
+    @JsonIgnore
     @ManyToOne
     private TheoreticalCourse theoreticalCourse;
 

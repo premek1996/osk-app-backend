@@ -4,6 +4,7 @@ import com.example.oskappbackend.domain.course.Course;
 import com.example.oskappbackend.domain.customer.Customer;
 import com.example.oskappbackend.domain.instructor.Instructor;
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -35,7 +36,7 @@ public class DrivingClass {
 
     private LocalDateTime endTime;
 
-    @JsonBackReference
+    @JsonIgnore
     @ManyToOne
     private Course course;
 
@@ -43,7 +44,7 @@ public class DrivingClass {
     @ManyToOne
     private Instructor instructor;
 
-    @JsonBackReference
+    @JsonIgnore
     @ManyToOne
     private Customer customer;
 

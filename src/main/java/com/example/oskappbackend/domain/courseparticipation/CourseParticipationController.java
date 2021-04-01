@@ -1,5 +1,6 @@
 package com.example.oskappbackend.domain.courseparticipation;
 
+import com.example.oskappbackend.domain.course.Course;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -31,6 +32,11 @@ public class CourseParticipationController {
     public CourseParticipation getCourseParticipationById(@PathVariable Long id) {
         return courseParticipationService.getCourseParticipationById(id)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, COURSE_PARTICIPATION_NOT_FOUND));
+    }
+
+    @GetMapping("/{customerId}")
+    public List<Course> getCoursesByCustomerId(@PathVariable Long customerId) {
+        return courseParticipationService.getCoursesByCustomerId(customerId);
     }
 
     @PostMapping

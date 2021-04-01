@@ -2,7 +2,7 @@ package com.example.oskappbackend.domain.courseparticipation;
 
 import com.example.oskappbackend.domain.course.Course;
 import com.example.oskappbackend.domain.customer.Customer;
-import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -29,11 +29,11 @@ public class CourseParticipation {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @JsonBackReference
+    @JsonIgnore
     @ManyToOne
     private Course course;
 
-    @JsonBackReference
+    @JsonIgnore
     @ManyToOne
     private Customer customer;
 

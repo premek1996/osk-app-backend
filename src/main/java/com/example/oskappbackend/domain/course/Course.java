@@ -4,7 +4,7 @@ import com.example.oskappbackend.domain.courseparticipation.CourseParticipation;
 import com.example.oskappbackend.domain.drivingclass.DrivingClass;
 import com.example.oskappbackend.domain.payment.Payment;
 import com.example.oskappbackend.domain.theoreticalcourse.TheoreticalCourse;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -47,19 +47,19 @@ public class Course {
 
     private int practicalHours;
 
-    @JsonManagedReference
+    @JsonIgnore
     @OneToMany(mappedBy = "course")
     private Set<Payment> payments;
 
-    @JsonManagedReference
+    @JsonIgnore
     @OneToMany(mappedBy = "course")
     private Set<CourseParticipation> courseParticipation;
 
-    @JsonManagedReference
+    @JsonIgnore
     @OneToMany(mappedBy = "course")
     private Set<TheoreticalCourse> theoreticalCourses;
 
-    @JsonManagedReference
+    @JsonIgnore
     @OneToMany(mappedBy = "course")
     private Set<DrivingClass> drivingClasses;
 

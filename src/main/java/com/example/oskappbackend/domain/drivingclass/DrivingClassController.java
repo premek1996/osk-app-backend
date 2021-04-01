@@ -19,35 +19,40 @@ import java.util.List;
 @RequiredArgsConstructor
 public class DrivingClassController {
 
-    private final DrivingClassService paymentService;
+    private final DrivingClassService drivingClassService;
     private static final String DRIVING_CLASS_NOT_FOUND = "Driving class not found";
 
     @GetMapping
     public List<DrivingClass> getAllDrivingClasses() {
-        return paymentService.getAllDrivingClasses();
+        return drivingClassService.getAllDrivingClasses();
     }
 
     @GetMapping("/{id}")
     public DrivingClass getDrivingClassById(@PathVariable Long id) {
-        return paymentService.getDrivingClassById(id)
+        return drivingClassService.getDrivingClassById(id)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, DRIVING_CLASS_NOT_FOUND));
+    }
+
+    @GetMapping("/{courseId}/{customerId}")
+    public List<DrivingClass> getDrivingClassesByCourseIdAndCustomerId(@PathVariable Long courseId, @PathVariable Long customerId) {
+        return drivingClassService.getDrivingClassesByCourseIdAndCustomerId(courseId, customerId);
     }
 
     @PostMapping
     public DrivingClass createDrivingClass(@RequestBody DrivingClass payment) {
-        return paymentService.createDrivingClass(payment);
+        return drivingClassService.createDrivingClass(payment);
     }
 
     @PutMapping("/{id}")
     public DrivingClass updateDrivingClass(@PathVariable Long id,
                                            @RequestBody DrivingClass payment) {
-        return paymentService.updateDrivingClass(id, payment)
+        return drivingClassService.updateDrivingClass(id, payment)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, DRIVING_CLASS_NOT_FOUND));
     }
 
     @DeleteMapping("/{id}")
     public void deleteDrivingClassById(@PathVariable long id) {
-        paymentService.deleteDrivingClassById(id);
+        drivingClassService.deleteDrivingClassById(id);
     }
 
 }

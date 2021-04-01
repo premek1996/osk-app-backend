@@ -2,7 +2,7 @@ package com.example.oskappbackend.domain.instructor;
 
 import com.example.oskappbackend.domain.drivingclass.DrivingClass;
 import com.example.oskappbackend.domain.theoreticalcourse.TheoreticalCourse;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -40,11 +40,11 @@ public class Instructor {
 
     private String phone;
 
-    @JsonManagedReference
+    @JsonIgnore
     @OneToMany(mappedBy = "instructor")
     private Set<TheoreticalCourse> theoreticalCourses;
 
-    @JsonManagedReference
+    @JsonIgnore
     @OneToMany(mappedBy = "instructor")
     private Set<DrivingClass> drivingClasses;
 

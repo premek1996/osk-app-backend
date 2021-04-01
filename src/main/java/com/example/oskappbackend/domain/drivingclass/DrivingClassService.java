@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -19,6 +20,16 @@ public class DrivingClassService {
     public Optional<DrivingClass> getDrivingClassById(Long id) {
         return drivingClassRepository.findById(id);
     }
+
+    public List<DrivingClass> getDrivingClassesByCourseIdAndCustomerId(Long courseId,
+                                                                       Long customerId) {
+        return drivingClassRepository.findAll()
+                .stream()
+                .filter(drivingClass -> drivingClass.getCourse().getId().equals(courseId) &&
+                        drivingClass.getCustomer().getId().equals(customerId))
+                .collect(Collectors.toList());
+    }
+
 
     public DrivingClass createDrivingClass(DrivingClass drivingClass) {
         return drivingClassRepository.save(drivingClass);

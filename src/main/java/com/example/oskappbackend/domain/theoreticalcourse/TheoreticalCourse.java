@@ -4,7 +4,7 @@ import com.example.oskappbackend.domain.course.Course;
 import com.example.oskappbackend.domain.instructor.Instructor;
 import com.example.oskappbackend.domain.theoreticalclass.TheoreticalClass;
 import com.example.oskappbackend.domain.theoreticalcourseparticipation.TheoreticalCourseParticipation;
-import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -39,19 +39,19 @@ public class TheoreticalCourse {
 
     private int maxCustomers;
 
-    @JsonBackReference
+    @JsonIgnore
     @ManyToOne
     private Course course;
 
-    @JsonBackReference
+    @JsonManagedReference
     @ManyToOne
     private Instructor instructor;
 
-    @JsonManagedReference
+    @JsonIgnore
     @OneToMany(mappedBy = "theoreticalCourse")
     private Set<TheoreticalClass> theoreticalClasses;
 
-    @JsonManagedReference
+    @JsonIgnore
     @OneToMany(mappedBy = "theoreticalCourse")
     private Set<TheoreticalCourseParticipation> theoreticalCourseParticipation;
 
