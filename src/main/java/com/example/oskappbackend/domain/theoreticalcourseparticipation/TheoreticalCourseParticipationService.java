@@ -1,10 +1,12 @@
 package com.example.oskappbackend.domain.theoreticalcourseparticipation;
 
+import com.example.oskappbackend.domain.theoreticalcourse.TheoreticalCourse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -18,6 +20,15 @@ public class TheoreticalCourseParticipationService {
 
     public Optional<TheoreticalCourseParticipation> getTheoreticalCourseParticipationById(Long id) {
         return theoreticalCourseParticipationRepository.findById(id);
+    }
+
+    public List<TheoreticalCourse> getTheoreticalCoursesByCustomerIdAndCourseId(Long customerId, Long courseId) {
+        return theoreticalCourseParticipationRepository.findAll()
+                .stream()
+                .filter(theoreticalCourseParticipation -> theoreticalCourseParticipation.getCustomer().getId().equals(customerId)
+                        && theoreticalCourseParticipation.getTheoreticalCourse().getCourse().getId().equals(courseId))
+                .map(TheoreticalCourseParticipation::getTheoreticalCourse)
+                .collect(Collectors.toList());
     }
 
     public TheoreticalCourseParticipation createTheoreticalCourseParticipation(TheoreticalCourseParticipation theoreticalCourseParticipation) {

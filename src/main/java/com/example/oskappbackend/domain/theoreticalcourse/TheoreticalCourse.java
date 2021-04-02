@@ -47,7 +47,7 @@ public class TheoreticalCourse {
     @ManyToOne
     private Instructor instructor;
 
-    @JsonIgnore
+    @JsonManagedReference
     @OneToMany(mappedBy = "theoreticalCourse")
     private Set<TheoreticalClass> theoreticalClasses;
 
