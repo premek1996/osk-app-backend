@@ -32,14 +32,6 @@ public class Instructor {
 
     private String mail;
 
-    private String password;
-
-    private String name;
-
-    private String surname;
-
-    private String phone;
-
     @JsonIgnore
     @OneToMany(mappedBy = "instructor")
     private Set<TheoreticalCourse> theoreticalCourses;

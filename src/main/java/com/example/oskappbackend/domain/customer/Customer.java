@@ -34,14 +34,6 @@ public class Customer {
 
     private String mail;
 
-    private String password;
-
-    private String name;
-
-    private String surname;
-
-    private String phone;
-
     @JsonIgnore
     @OneToMany(mappedBy = "customer")
     private Set<Payment> payments;

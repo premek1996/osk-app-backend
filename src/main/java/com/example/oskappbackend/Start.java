@@ -55,19 +55,11 @@ public class Start {
 
         Instructor instructor = Instructor.builder()
                 .mail("mail")
-                .password("password")
-                .name("name")
-                .surname("surname")
-                .phone("999999999")
                 .build();
         instructorService.createInstructor(instructor);
 
         Customer customer = Customer.builder()
                 .mail("mail")
-                .password("password")
-                .name("name")
-                .surname("surname")
-                .phone("999999999")
                 .build();
         customerService.createCustomer(customer);
 
