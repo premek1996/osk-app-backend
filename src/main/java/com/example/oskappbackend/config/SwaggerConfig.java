@@ -10,14 +10,14 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 @Configuration
 @EnableSwagger2
-public class Config {
+public class SwaggerConfig {
 
     @Bean
     public Docket getDocket() {
         return new Docket(DocumentationType.SWAGGER_2)
                 .select()
                 .apis(RequestHandlerSelectors.any())
-                .paths(PathSelectors. regex ( "^(?!/(error).*$).*$" ))
+                .paths(PathSelectors.regex("^(?!/(error).*$).*$"))
                 .build();
     }
 
