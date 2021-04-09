@@ -27,9 +27,15 @@ public class CustomerController {
         return customerService.getAllCustomers();
     }
 
-    @GetMapping("/{id}")
+/*    @GetMapping("/{id}")
     public Customer getCustomerById(@PathVariable Long id) {
         return customerService.getCustomerById(id)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, CUSTOMER_NOT_FOUND));
+    }*/
+
+    @GetMapping("/{mail}")
+    public Customer getCustomerByMail(@PathVariable String mail) {
+        return customerService.getCustomerByMail(mail)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, CUSTOMER_NOT_FOUND));
     }
 

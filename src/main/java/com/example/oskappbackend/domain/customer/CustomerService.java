@@ -20,6 +20,10 @@ public class CustomerService {
         return customerRepository.findById(id);
     }
 
+    public Optional<Customer> getCustomerByMail(String mail) {
+        return customerRepository.findCustomerByMail(mail);
+    }
+
     public Customer createCustomer(Customer customer) {
         return customerRepository.save(customer);
     }
