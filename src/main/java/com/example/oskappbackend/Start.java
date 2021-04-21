@@ -9,6 +9,7 @@ import com.example.oskappbackend.domain.customer.Customer;
 import com.example.oskappbackend.domain.customer.CustomerService;
 import com.example.oskappbackend.domain.drivingclass.DrivingClass;
 import com.example.oskappbackend.domain.drivingclass.DrivingClassService;
+import com.example.oskappbackend.domain.drivingclass.Location;
 import com.example.oskappbackend.domain.instructor.Instructor;
 import com.example.oskappbackend.domain.instructor.InstructorService;
 import com.example.oskappbackend.domain.payment.Payment;
@@ -26,6 +27,7 @@ import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Component
 @RequiredArgsConstructor
@@ -94,12 +96,15 @@ public class Start {
                 .build();
         theoreticalClassService.createTheoreticalClass(theoreticalClass);
 
+        List<Location> locations = List.of(new Location(44.087585, 44.087585), new Location(44.087585, 44.087585));
+
         DrivingClass drivingClass = DrivingClass.builder()
                 .course(course)
                 .customer(customer)
                 .instructor(instructor)
                 .startTime(LocalDateTime.now())
                 .endTime(LocalDateTime.now())
+                .locations(locations)
                 .build();
         drivingClassService.createDrivingClass(drivingClass);
 
