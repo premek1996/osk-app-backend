@@ -59,4 +59,9 @@ public class DrivingClass {
     @ManyToOne
     private Customer customer;
 
+    public DrivingClass withSetLocations(List<Location> locations) {
+        this.locations = locations;
+        return this;
+    }
+
 }

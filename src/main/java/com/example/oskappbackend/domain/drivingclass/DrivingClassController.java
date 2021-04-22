@@ -39,14 +39,14 @@ public class DrivingClassController {
     }
 
     @PostMapping
-    public DrivingClass createDrivingClass(@RequestBody DrivingClass payment) {
-        return drivingClassService.createDrivingClass(payment);
+    public DrivingClass createDrivingClass(@RequestBody DrivingClass drivingClass) {
+        return drivingClassService.createDrivingClass(drivingClass);
     }
 
     @PutMapping("/{id}")
     public DrivingClass updateDrivingClass(@PathVariable Long id,
-                                           @RequestBody DrivingClass payment) {
-        return drivingClassService.updateDrivingClass(id, payment)
+                                           @RequestBody List<Location> locations) {
+        return drivingClassService.updateDrivingClass(id, locations)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, DRIVING_CLASS_NOT_FOUND));
     }
 

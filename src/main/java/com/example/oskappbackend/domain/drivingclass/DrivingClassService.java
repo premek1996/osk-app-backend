@@ -30,15 +30,14 @@ public class DrivingClassService {
                 .collect(Collectors.toList());
     }
 
-
     public DrivingClass createDrivingClass(DrivingClass drivingClass) {
         return drivingClassRepository.save(drivingClass);
     }
 
-    public Optional<DrivingClass> updateDrivingClass(Long id, DrivingClass drivingClass) {
-        return Optional.of(drivingClassRepository.existsById(id))
-                .filter(Boolean.TRUE::equals)
-                .map(ifExist -> drivingClassRepository.save(drivingClass));
+    public Optional<DrivingClass> updateDrivingClass(Long id, List<Location> locations) {
+        return drivingClassRepository.findById(id)
+                .map(drivingClass -> drivingClass.withSetLocations(locations))
+                .map(drivingClassRepository::save);
     }
 
     public void deleteDrivingClassById(Long id) {
