@@ -41,8 +41,6 @@ public class Course {
     @Enumerated(EnumType.STRING)
     private Category category;
 
-    private String description;
-
     private int theoreticalHours;
 
     private int practicalHours;

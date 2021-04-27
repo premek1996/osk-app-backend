@@ -46,14 +46,32 @@ public class Start {
     @EventListener(ApplicationReadyEvent.class)
     public void init() {
         Course course = Course.builder()
-                .name("name")
+                .name("Prawo jazdy kategorii B")
                 .category(Category.B)
-                .description("description")
-                .price(1800)
-                .practicalHours(42)
-                .theoreticalHours(23)
+                .price(2200)
+                .practicalHours(30)
+                .theoreticalHours(30)
                 .build();
+
+        Course course2 = Course.builder()
+                .name("Prawo jazdy kategorii B na automacie")
+                .category(Category.B)
+                .price(2000)
+                .practicalHours(30)
+                .theoreticalHours(30)
+                .build();
+
+        Course course3 = Course.builder()
+                .name("Prawo jazdy kategorii E/B")
+                .category(Category.B)
+                .price(1400)
+                .practicalHours(20)
+                .theoreticalHours(20)
+                .build();
+
         courseService.createCourse(course);
+        courseService.createCourse(course2);
+        courseService.createCourse(course3);
 
         Instructor instructor = Instructor.builder()
                 .mail("mail")
