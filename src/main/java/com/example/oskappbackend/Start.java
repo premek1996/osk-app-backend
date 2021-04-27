@@ -107,6 +107,22 @@ public class Start {
                 .build();
         theoreticalCourseService.createTheoreticalCourse(theoreticalCourse);
 
+        TheoreticalCourse theoreticalCourse2 = TheoreticalCourse.builder()
+                .course(course)
+                .instructor(instructor)
+                .maxCustomers(23)
+                .startDate(LocalDate.now().plusDays(10))
+                .build();
+        theoreticalCourseService.createTheoreticalCourse(theoreticalCourse2);
+
+        TheoreticalCourse theoreticalCourse3 = TheoreticalCourse.builder()
+                .course(course)
+                .instructor(instructor)
+                .maxCustomers(23)
+                .startDate(LocalDate.now().plusDays(20))
+                .build();
+        theoreticalCourseService.createTheoreticalCourse(theoreticalCourse3);
+
         TheoreticalClass theoreticalClass = TheoreticalClass.builder()
                 .theoreticalCourse(theoreticalCourse)
                 .startTime(LocalDateTime.now())
