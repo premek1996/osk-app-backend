@@ -28,15 +28,9 @@ public class TheoreticalCourseParticipationController {
         return theoreticalCourseParticipationService.getAllTheoreticalCourseParticipation();
     }
 
-    @GetMapping("/{id}")
-    public TheoreticalCourseParticipation getTheoreticalCourseParticipationById(@PathVariable Long id) {
-        return theoreticalCourseParticipationService.getTheoreticalCourseParticipationById(id)
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, THEORETICAL_COURSE_PARTICIPATION_NOT_FOUND));
-    }
-
-    @GetMapping("/{customerId}/{courseId}")
-    public List<TheoreticalCourse> getTheoreticalCoursesByCustomerIdAndCourseId(@PathVariable Long customerId, @PathVariable Long courseId) {
-        return theoreticalCourseParticipationService.getTheoreticalCoursesByCustomerIdAndCourseId(customerId, courseId);
+    @GetMapping("/{customerId}")
+    public List<TheoreticalCourse> getTheoreticalCoursesByCustomerIdAndCourseId(@PathVariable Long customerId) {
+        return theoreticalCourseParticipationService.getTheoreticalCoursesByCustomerId(customerId);
     }
 
     @PostMapping

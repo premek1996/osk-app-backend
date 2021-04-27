@@ -1,6 +1,5 @@
 package com.example.oskappbackend.domain.customer;
 
-import com.example.oskappbackend.domain.courseparticipation.CourseParticipation;
 import com.example.oskappbackend.domain.drivingclass.DrivingClass;
 import com.example.oskappbackend.domain.payment.Payment;
 import com.example.oskappbackend.domain.theoreticalcourseparticipation.TheoreticalCourseParticipation;
@@ -27,16 +26,12 @@ public class Customer {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(unique=true)
+    @Column(unique = true)
     private String mail;
 
     @JsonIgnore
     @OneToMany(mappedBy = "customer")
     private Set<Payment> payments;
-
-    @JsonIgnore
-    @OneToMany(mappedBy = "customer")
-    private Set<CourseParticipation> courseParticipation;
 
     @JsonIgnore
     @OneToMany(mappedBy = "customer")

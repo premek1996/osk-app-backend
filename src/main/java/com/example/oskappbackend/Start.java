@@ -3,8 +3,6 @@ package com.example.oskappbackend;
 import com.example.oskappbackend.domain.course.Category;
 import com.example.oskappbackend.domain.course.Course;
 import com.example.oskappbackend.domain.course.CourseService;
-import com.example.oskappbackend.domain.courseparticipation.CourseParticipation;
-import com.example.oskappbackend.domain.courseparticipation.CourseParticipationService;
 import com.example.oskappbackend.domain.customer.Customer;
 import com.example.oskappbackend.domain.customer.CustomerService;
 import com.example.oskappbackend.domain.drivingclass.DrivingClass;
@@ -41,7 +39,6 @@ public class Start {
     private final TheoreticalClassService theoreticalClassService;
     private final DrivingClassService drivingClassService;
     private final TheoreticalCourseParticipationService theoreticalCourseParticipationService;
-    private final CourseParticipationService courseParticipationService;
 
     @EventListener(ApplicationReadyEvent.class)
     public void init() {
@@ -91,13 +88,6 @@ public class Start {
                 .dateTime(LocalDateTime.now())
                 .build();
         paymentService.createPayment(payment);
-
-        CourseParticipation courseParticipation = CourseParticipation.builder()
-                .course(course)
-                .customer(customer)
-                .build();
-
-        courseParticipationService.createCourseParticipation(courseParticipation);
 
         TheoreticalCourse theoreticalCourse = TheoreticalCourse.builder()
                 .course(course)

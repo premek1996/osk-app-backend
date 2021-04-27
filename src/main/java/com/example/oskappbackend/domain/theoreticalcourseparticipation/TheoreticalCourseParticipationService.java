@@ -22,11 +22,10 @@ public class TheoreticalCourseParticipationService {
         return theoreticalCourseParticipationRepository.findById(id);
     }
 
-    public List<TheoreticalCourse> getTheoreticalCoursesByCustomerIdAndCourseId(Long customerId, Long courseId) {
+    public List<TheoreticalCourse> getTheoreticalCoursesByCustomerId(Long customerId) {
         return theoreticalCourseParticipationRepository.findAll()
                 .stream()
-                .filter(theoreticalCourseParticipation -> theoreticalCourseParticipation.getCustomer().getId().equals(customerId)
-                        && theoreticalCourseParticipation.getTheoreticalCourse().getCourse().getId().equals(courseId))
+                .filter(theoreticalCourseParticipation -> theoreticalCourseParticipation.getCustomer().getId().equals(customerId))
                 .map(TheoreticalCourseParticipation::getTheoreticalCourse)
                 .collect(Collectors.toList());
     }
