@@ -69,9 +69,9 @@ public class Start {
                 .theoreticalHours(20)
                 .build();
 
-        courseService.createCourse(course);
-        courseService.createCourse(course2);
-        courseService.createCourse(course3);
+        course = courseService.createCourse(course);
+        course2 = courseService.createCourse(course2);
+        course3 = courseService.createCourse(course3);
 
         Instructor instructor = Instructor.builder()
                 .mail("mail")

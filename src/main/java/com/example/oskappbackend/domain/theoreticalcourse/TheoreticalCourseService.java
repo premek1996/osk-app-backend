@@ -18,10 +18,6 @@ public class TheoreticalCourseService {
         return theoreticalCourseRepository.findAll();
     }
 
-    public Optional<TheoreticalCourse> getTheoreticalCourseById(Long id) {
-        return theoreticalCourseRepository.findById(id);
-    }
-
     public List<TheoreticalCourse> getTheoreticalCoursesByCourseId(@PathVariable Long courseId) {
         return theoreticalCourseRepository.findAll()
                 .stream()

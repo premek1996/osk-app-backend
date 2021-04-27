@@ -27,17 +27,11 @@ public class TheoreticalCourseController {
         return theoreticalCourseService.getAllTheoreticalCourses();
     }
 
-    @GetMapping("/{id}")
-    public TheoreticalCourse getTheoreticalCourseById(@PathVariable Long id) {
-        return theoreticalCourseService.getTheoreticalCourseById(id)
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, THEORETICAL_COURSE_NOT_FOUND));
-    }
-
     @GetMapping("/{courseId}")
     public List<TheoreticalCourse> getTheoreticalCoursesByCourseId(@PathVariable Long courseId) {
         return theoreticalCourseService.getTheoreticalCoursesByCourseId(courseId);
     }
-    
+
     @PostMapping
     public TheoreticalCourse createTheoreticalCourse(@RequestBody TheoreticalCourse theoreticalCourse) {
         return theoreticalCourseService.createTheoreticalCourse(theoreticalCourse);
