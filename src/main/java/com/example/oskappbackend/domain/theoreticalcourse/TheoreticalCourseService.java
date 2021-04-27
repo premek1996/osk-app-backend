@@ -1,8 +1,10 @@
 package com.example.oskappbackend.domain.theoreticalcourse;
 
+import com.example.oskappbackend.domain.customer.Customer;
+import com.example.oskappbackend.domain.theoreticalcourseparticipation.TheoreticalCourseParticipation;
+import com.example.oskappbackend.domain.theoreticalcourseparticipation.TheoreticalCourseParticipationRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
 import java.util.Optional;
@@ -13,17 +15,35 @@ import java.util.stream.Collectors;
 public class TheoreticalCourseService {
 
     private final TheoreticalCourseRepository theoreticalCourseRepository;
+    private final TheoreticalCourseParticipationRepository theoreticalCourseParticipationRepository;
 
     public List<TheoreticalCourse> getAllTheoreticalCourses() {
         return theoreticalCourseRepository.findAll();
     }
 
-    public List<TheoreticalCourse> getTheoreticalCoursesByCourseId(@PathVariable Long courseId) {
+    public List<TheoreticalCourse> getTheoreticalCoursesByCourseId(Long courseId) {
         return theoreticalCourseRepository.findAll()
                 .stream()
                 .filter(theoreticalCourse -> theoreticalCourse.getCourse().getId().equals(courseId))
                 .collect(Collectors.toList());
     }
+
+    public List<TheoreticalCourse> getTheoreticalCoursesByCustomerId(Long customerId) {
+        return theoreticalCourseParticipationRepository.findAll()
+                .stream()
+                .filter(theoreticalCourseParticipation -> theoreticalCourseParticipation.getCustomer().getId().equals(customerId))
+                .map(TheoreticalCourseParticipation::getTheoreticalCourse)
+                .collect(Collectors.toList());
+    }
+
+    public void enrollCustomerInTheoreticalCourse(Customer customer, TheoreticalCourse theoreticalCourse) {
+        TheoreticalCourseParticipation theoreticalCourseParticipation = TheoreticalCourseParticipation.builder()
+                .customer(customer)
+                .theoreticalCourse(theoreticalCourse)
+                .build();
+        theoreticalCourseParticipationRepository.save(theoreticalCourseParticipation);
+    }
+
 
     public TheoreticalCourse createTheoreticalCourse(TheoreticalCourse theoreticalCourse) {
         return theoreticalCourseRepository.save(theoreticalCourse);

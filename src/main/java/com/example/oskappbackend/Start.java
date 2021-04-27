@@ -16,8 +16,6 @@ import com.example.oskappbackend.domain.theoreticalclass.TheoreticalClass;
 import com.example.oskappbackend.domain.theoreticalclass.TheoreticalClassService;
 import com.example.oskappbackend.domain.theoreticalcourse.TheoreticalCourse;
 import com.example.oskappbackend.domain.theoreticalcourse.TheoreticalCourseService;
-import com.example.oskappbackend.domain.theoreticalcourseparticipation.TheoreticalCourseParticipation;
-import com.example.oskappbackend.domain.theoreticalcourseparticipation.TheoreticalCourseParticipationService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.event.EventListener;
@@ -38,7 +36,6 @@ public class Start {
     private final TheoreticalCourseService theoreticalCourseService;
     private final TheoreticalClassService theoreticalClassService;
     private final DrivingClassService drivingClassService;
-    private final TheoreticalCourseParticipationService theoreticalCourseParticipationService;
 
     @EventListener(ApplicationReadyEvent.class)
     public void init() {
@@ -106,7 +103,7 @@ public class Start {
         theoreticalCourseService.createTheoreticalCourse(theoreticalCourse2);
 
         TheoreticalCourse theoreticalCourse3 = TheoreticalCourse.builder()
-                .course(course)
+                .course(course2)
                 .instructor(instructor)
                 .maxCustomers(23)
                 .startDate(LocalDate.now().plusDays(20))
@@ -132,11 +129,8 @@ public class Start {
                 .build();
         drivingClassService.createDrivingClass(drivingClass);
 
-        TheoreticalCourseParticipation theoreticalCourseParticipation = TheoreticalCourseParticipation.builder()
-                .customer(customer)
-                .theoreticalCourse(theoreticalCourse)
-                .build();
-        theoreticalCourseParticipationService.createTheoreticalCourseParticipation(theoreticalCourseParticipation);
+        theoreticalCourseService.enrollCustomerInTheoreticalCourse(customer, theoreticalCourse);
+        theoreticalCourseService.enrollCustomerInTheoreticalCourse(customer, theoreticalCourse3);
 
     }
 

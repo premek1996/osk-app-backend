@@ -27,9 +27,14 @@ public class TheoreticalCourseController {
         return theoreticalCourseService.getAllTheoreticalCourses();
     }
 
-    @GetMapping("/{courseId}")
+    @GetMapping("/courseId/{courseId}")
     public List<TheoreticalCourse> getTheoreticalCoursesByCourseId(@PathVariable Long courseId) {
         return theoreticalCourseService.getTheoreticalCoursesByCourseId(courseId);
+    }
+
+    @GetMapping("/customerId/{customerId}")
+    public List<TheoreticalCourse> getTheoreticalCoursesByCustomerId(@PathVariable Long customerId) {
+        return theoreticalCourseService.getTheoreticalCoursesByCustomerId(customerId);
     }
 
     @PostMapping
