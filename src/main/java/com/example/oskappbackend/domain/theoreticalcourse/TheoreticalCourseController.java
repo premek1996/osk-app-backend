@@ -1,5 +1,6 @@
 package com.example.oskappbackend.domain.theoreticalcourse;
 
+import com.example.oskappbackend.domain.theoreticalcourseparticipation.TheoreticalCourseParticipation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -35,6 +36,11 @@ public class TheoreticalCourseController {
     @GetMapping("/customerId/{customerId}")
     public List<TheoreticalCourse> getTheoreticalCoursesByCustomerId(@PathVariable Long customerId) {
         return theoreticalCourseService.getTheoreticalCoursesByCustomerId(customerId);
+    }
+
+    @PostMapping("/{customerId}/{theoreticalCourseId}")
+    public TheoreticalCourseParticipation enrollCustomerInTheoreticalCourse(@PathVariable Long customerId, @PathVariable Long theoreticalCourseId) {
+        return theoreticalCourseService.enrollCustomerInTheoreticalCourse(customerId, theoreticalCourseId);
     }
 
     @PostMapping

@@ -1,6 +1,7 @@
 package com.example.oskappbackend.domain.theoreticalcourse;
 
 import com.example.oskappbackend.domain.customer.Customer;
+import com.example.oskappbackend.domain.customer.CustomerRepository;
 import com.example.oskappbackend.domain.theoreticalcourseparticipation.TheoreticalCourseParticipation;
 import com.example.oskappbackend.domain.theoreticalcourseparticipation.TheoreticalCourseParticipationRepository;
 import lombok.RequiredArgsConstructor;
@@ -16,6 +17,7 @@ public class TheoreticalCourseService {
 
     private final TheoreticalCourseRepository theoreticalCourseRepository;
     private final TheoreticalCourseParticipationRepository theoreticalCourseParticipationRepository;
+    private final CustomerRepository customerRepository;
 
     public List<TheoreticalCourse> getAllTheoreticalCourses() {
         return theoreticalCourseRepository.findAll();
@@ -36,12 +38,14 @@ public class TheoreticalCourseService {
                 .collect(Collectors.toList());
     }
 
-    public void enrollCustomerInTheoreticalCourse(Customer customer, TheoreticalCourse theoreticalCourse) {
+    public TheoreticalCourseParticipation enrollCustomerInTheoreticalCourse(Long customerId, Long theoreticalCourseId) {
+        Customer customer = customerRepository.getOne(customerId);
+        TheoreticalCourse theoreticalCourse = theoreticalCourseRepository.getOne(theoreticalCourseId);
         TheoreticalCourseParticipation theoreticalCourseParticipation = TheoreticalCourseParticipation.builder()
                 .customer(customer)
                 .theoreticalCourse(theoreticalCourse)
                 .build();
-        theoreticalCourseParticipationRepository.save(theoreticalCourseParticipation);
+        return theoreticalCourseParticipationRepository.save(theoreticalCourseParticipation);
     }
 
 

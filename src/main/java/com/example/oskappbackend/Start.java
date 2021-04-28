@@ -129,9 +129,6 @@ public class Start {
                 .build();
         drivingClassService.createDrivingClass(drivingClass);
 
-        theoreticalCourseService.enrollCustomerInTheoreticalCourse(customer, theoreticalCourse);
-        theoreticalCourseService.enrollCustomerInTheoreticalCourse(customer, theoreticalCourse3);
-
     }
 
 }
