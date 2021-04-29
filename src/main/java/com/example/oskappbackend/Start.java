@@ -129,6 +129,29 @@ public class Start {
                 .build();
         drivingClassService.createDrivingClass(drivingClass);
 
+
+        DrivingClass drivingClass2 = DrivingClass.builder()
+                .course(course)
+                .customer(customer)
+                .instructor(instructor)
+                .startTime(LocalDateTime.now().plusDays(2))
+                .endTime(LocalDateTime.now().plusDays(2))
+                .locations(locations)
+                .build();
+
+        drivingClassService.createDrivingClass(drivingClass2);
+
+        DrivingClass drivingClass3 = DrivingClass.builder()
+                .course(course)
+                .customer(customer)
+                .instructor(instructor)
+                .startTime(LocalDateTime.now().plusDays(4))
+                .endTime(LocalDateTime.now().plusDays(4))
+                .locations(locations)
+                .build();
+
+        drivingClassService.createDrivingClass(drivingClass3);
+
     }
 
 }
