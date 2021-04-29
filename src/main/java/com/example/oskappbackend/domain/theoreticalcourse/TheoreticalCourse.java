@@ -38,7 +38,9 @@ public class TheoreticalCourse {
 
     private LocalDate startDate;
 
-    private int maxCustomers;
+    private int customersMaxNumber;
+
+    private int customersCurrentNumber;
 
     @JsonManagedReference
     @ManyToOne
@@ -55,5 +57,13 @@ public class TheoreticalCourse {
     @JsonIgnore
     @OneToMany(mappedBy = "theoreticalCourse")
     private Set<TheoreticalCourseParticipation> theoreticalCourseParticipation;
+
+    public void incrementCustomersCurrentNumber() {
+        this.customersCurrentNumber++;
+    }
+
+    public boolean isAvailable() {
+        return customersCurrentNumber < customersMaxNumber;
+    }
 
 }

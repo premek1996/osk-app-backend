@@ -23,10 +23,11 @@ public class TheoreticalCourseService {
         return theoreticalCourseRepository.findAll();
     }
 
-    public List<TheoreticalCourse> getTheoreticalCoursesByCourseId(Long courseId) {
+    public List<TheoreticalCourse> getAvailableTheoreticalCoursesByCourseId(Long courseId) {
         return theoreticalCourseRepository.findAll()
                 .stream()
                 .filter(theoreticalCourse -> theoreticalCourse.getCourse().getId().equals(courseId))
+                .filter(TheoreticalCourse::isAvailable)
                 .collect(Collectors.toList());
     }
 
@@ -41,10 +42,12 @@ public class TheoreticalCourseService {
     public TheoreticalCourseParticipation enrollCustomerInTheoreticalCourse(Long customerId, Long theoreticalCourseId) {
         Customer customer = customerRepository.getOne(customerId);
         TheoreticalCourse theoreticalCourse = theoreticalCourseRepository.getOne(theoreticalCourseId);
+        theoreticalCourse.incrementCustomersCurrentNumber();
         TheoreticalCourseParticipation theoreticalCourseParticipation = TheoreticalCourseParticipation.builder()
                 .customer(customer)
                 .theoreticalCourse(theoreticalCourse)
                 .build();
+        theoreticalCourseRepository.save(theoreticalCourse);
         return theoreticalCourseParticipationRepository.save(theoreticalCourseParticipation);
     }
 

@@ -89,7 +89,7 @@ public class Start {
         TheoreticalCourse theoreticalCourse = TheoreticalCourse.builder()
                 .course(course)
                 .instructor(instructor)
-                .maxCustomers(23)
+                .customersMaxNumber(30)
                 .startDate(LocalDate.now())
                 .build();
         theoreticalCourseService.createTheoreticalCourse(theoreticalCourse);
@@ -97,7 +97,7 @@ public class Start {
         TheoreticalCourse theoreticalCourse2 = TheoreticalCourse.builder()
                 .course(course)
                 .instructor(instructor)
-                .maxCustomers(23)
+                .customersMaxNumber(23)
                 .startDate(LocalDate.now().plusDays(10))
                 .build();
         theoreticalCourseService.createTheoreticalCourse(theoreticalCourse2);
@@ -105,7 +105,7 @@ public class Start {
         TheoreticalCourse theoreticalCourse3 = TheoreticalCourse.builder()
                 .course(course2)
                 .instructor(instructor)
-                .maxCustomers(23)
+                .customersMaxNumber(23)
                 .startDate(LocalDate.now().plusDays(20))
                 .build();
         theoreticalCourseService.createTheoreticalCourse(theoreticalCourse3);
