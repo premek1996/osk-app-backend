@@ -29,8 +29,8 @@ public class TheoreticalCourseController {
     }
 
     @GetMapping("/courseId/{courseId}")
-    public List<TheoreticalCourse> getTheoreticalCoursesByCourseId(@PathVariable Long courseId) {
-        return theoreticalCourseService.getTheoreticalCoursesByCourseId(courseId);
+    public List<TheoreticalCourse> getAvailableTheoreticalCoursesByCourseId(@PathVariable Long courseId) {
+        return theoreticalCourseService.getAvailableTheoreticalCoursesByCourseId(courseId);
     }
 
     @GetMapping("/customerId/{customerId}")
