@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
+import java.util.Set;
 
 @RestController
 @RequestMapping("/theoretical-classes")
@@ -48,6 +49,11 @@ public class TheoreticalClassController {
     @DeleteMapping("/{id}")
     public void deleteTheoreticalClassById(@PathVariable long id) {
         theoreticalClassService.deleteTheoreticalClassById(id);
+    }
+
+    @GetMapping("/courseId/{courseId}")
+    public List<TheoreticalClass> getAvailableTheoreticalCoursesByCourseId(@PathVariable Long courseId) {
+        return theoreticalClassService.getTheoreticalCoursesClassesByCourseId(courseId);
     }
 
 }

@@ -117,6 +117,27 @@ public class Start {
                 .build();
         theoreticalClassService.createTheoreticalClass(theoreticalClass);
 
+        TheoreticalClass theoreticalClass2 = TheoreticalClass.builder()
+                .theoreticalCourse(theoreticalCourse)
+                .startTime(LocalDateTime.now().plusDays(2))
+                .endTime(LocalDateTime.now().plusDays(2))
+                .build();
+        theoreticalClassService.createTheoreticalClass(theoreticalClass2);
+
+        TheoreticalClass theoreticalClass3 = TheoreticalClass.builder()
+                .theoreticalCourse(theoreticalCourse)
+                .startTime(LocalDateTime.now().plusDays(4))
+                .endTime(LocalDateTime.now().plusDays(4))
+                .build();
+        theoreticalClassService.createTheoreticalClass(theoreticalClass3);
+
+        TheoreticalClass theoreticalClass4 = TheoreticalClass.builder()
+                .theoreticalCourse(theoreticalCourse2)
+                .startTime(LocalDateTime.now().plusDays(1))
+                .endTime(LocalDateTime.now().plusDays(1))
+                .build();
+        theoreticalClassService.createTheoreticalClass(theoreticalClass4);
+
         List<Location> locations = List.of(new Location(44.087585, 44.087585), new Location(44.087585, 44.087585));
 
         DrivingClass drivingClass = DrivingClass.builder()
