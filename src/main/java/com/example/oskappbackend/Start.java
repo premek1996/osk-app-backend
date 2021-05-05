@@ -112,29 +112,29 @@ public class Start {
 
         TheoreticalClass theoreticalClass = TheoreticalClass.builder()
                 .theoreticalCourse(theoreticalCourse)
-                .startTime(LocalDateTime.now())
-                .endTime(LocalDateTime.now())
+                .startTime(LocalDateTime.parse("2021-05-06T18:00:00"))
+                .endTime(LocalDateTime.parse("2021-05-06T19:30:00"))
                 .build();
         theoreticalClassService.createTheoreticalClass(theoreticalClass);
 
         TheoreticalClass theoreticalClass2 = TheoreticalClass.builder()
                 .theoreticalCourse(theoreticalCourse)
-                .startTime(LocalDateTime.now().plusDays(2))
-                .endTime(LocalDateTime.now().plusDays(2))
+                .startTime(LocalDateTime.parse("2021-05-13T18:00:00"))
+                .endTime(LocalDateTime.parse("2021-05-13T19:30:00"))
                 .build();
         theoreticalClassService.createTheoreticalClass(theoreticalClass2);
 
         TheoreticalClass theoreticalClass3 = TheoreticalClass.builder()
                 .theoreticalCourse(theoreticalCourse)
-                .startTime(LocalDateTime.now().plusDays(4))
-                .endTime(LocalDateTime.now().plusDays(4))
+                .startTime(LocalDateTime.parse("2021-05-20T18:00:00"))
+                .endTime(LocalDateTime.parse("2021-05-20T19:30:00"))
                 .build();
         theoreticalClassService.createTheoreticalClass(theoreticalClass3);
 
         TheoreticalClass theoreticalClass4 = TheoreticalClass.builder()
                 .theoreticalCourse(theoreticalCourse2)
-                .startTime(LocalDateTime.now().plusDays(1))
-                .endTime(LocalDateTime.now().plusDays(1))
+                .startTime(LocalDateTime.parse("2021-05-06T18:00:00"))
+                .endTime(LocalDateTime.parse("2021-05-06T19:30:00"))
                 .build();
         theoreticalClassService.createTheoreticalClass(theoreticalClass4);
 
