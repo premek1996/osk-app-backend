@@ -1,12 +1,9 @@
 package com.example.oskappbackend.domain.theoreticalclass;
 
-import com.example.oskappbackend.domain.theoreticalcourse.TheoreticalCourse;
 import com.example.oskappbackend.domain.theoreticalcourse.TheoreticalCourseRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -40,13 +37,11 @@ public class TheoreticalClassService {
         theoreticalClassRepository.deleteById(id);
     }
 
-    public List<TheoreticalClass> getTheoreticalCoursesClassesByCourseId(Long courseId) {
-        List<TheoreticalClass> l = new ArrayList<>();
-        for (TheoreticalClass theoreticalClass : theoreticalClassRepository.findAll()) {
-            if (theoreticalClass.getTheoreticalCourse().getId().equals(courseId)) {
-                l.add(theoreticalClass);
-            }
-        }
-        return l;
+    public List<TheoreticalClass> getTheoreticalClassesByCourseId(Long courseId) {
+        return theoreticalClassRepository.findAll()
+                .stream()
+                .filter(theoreticalClass -> theoreticalClass.getTheoreticalCourse().getId().equals(courseId))
+                .collect(Collectors.toList());
     }
+
 }
