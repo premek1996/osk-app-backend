@@ -138,7 +138,11 @@ public class Start {
                 .build();
         theoreticalClassService.createTheoreticalClass(theoreticalClass4);
 
-        List<Location> locations = List.of(new Location(44.087585, 44.087585), new Location(44.087585, 44.087585));
+        List<Location> locations = List.of(
+                new Location(51.10926382422896, 17.061962513665772),
+                new Location(51.11438225604232, 17.0605490562112),
+                new Location(51.11628341568578, 17.055363031720777),
+                new Location(51.12560832839537, 17.054337019704196));
 
         DrivingClass drivingClass = DrivingClass.builder()
                 .course(course)
