@@ -15,7 +15,7 @@ import java.io.Serializable;
 @Builder
 public class Location implements Serializable {
 
-    private double latitude;
-    private double longitude;
+    private double lat;
+    private double lng;
 
 }
