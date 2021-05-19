@@ -131,6 +131,21 @@ public class Start {
                 .build();
         theoreticalClassService.createTheoreticalClass(theoreticalClass3);
 
+        TheoreticalClass theoreticalClass5 = TheoreticalClass.builder()
+                .theoreticalCourse(theoreticalCourse)
+                .startTime(LocalDateTime.parse("2021-05-27T18:00:00"))
+                .endTime(LocalDateTime.parse("2021-05-27T19:30:00"))
+                .build();
+        theoreticalClassService.createTheoreticalClass(theoreticalClass5);
+
+        TheoreticalClass theoreticalClass6 = TheoreticalClass.builder()
+                .theoreticalCourse(theoreticalCourse)
+                .startTime(LocalDateTime.parse("2021-06-03T18:00:00"))
+                .endTime(LocalDateTime.parse("2021-05-20T19:30:00"))
+                .build();
+        theoreticalClassService.createTheoreticalClass(theoreticalClass6);
+
+
         TheoreticalClass theoreticalClass4 = TheoreticalClass.builder()
                 .theoreticalCourse(theoreticalCourse2)
                 .startTime(LocalDateTime.parse("2021-05-06T18:00:00"))
