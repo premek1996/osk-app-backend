@@ -39,8 +39,8 @@ public class DrivingClassController {
     }
 
     @PostMapping
-    public DrivingClass createDrivingClass(@RequestBody DrivingClass drivingClass) {
-        return drivingClassService.createDrivingClass(drivingClass);
+    public DrivingClass createDrivingClass(@RequestBody DrivingClassDTO drivingClassDTO) {
+        return drivingClassService.createDrivingClass(DrivingClassMapper.from(drivingClassDTO));
     }
 
     @PutMapping("/{id}")
