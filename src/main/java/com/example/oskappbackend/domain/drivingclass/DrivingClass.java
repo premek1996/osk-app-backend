@@ -3,8 +3,8 @@ package com.example.oskappbackend.domain.drivingclass;
 import com.example.oskappbackend.domain.course.Course;
 import com.example.oskappbackend.domain.customer.Customer;
 import com.example.oskappbackend.domain.instructor.Instructor;
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.vladmihalcea.hibernate.type.json.JsonStringType;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -41,8 +41,6 @@ public class DrivingClass {
 
     private LocalDateTime startTime;
 
-    private LocalDateTime endTime;
-
     @Type(type = "json")
     @Column(columnDefinition = "json")
     private List<Location> locations;
@@ -51,7 +49,7 @@ public class DrivingClass {
     @ManyToOne
     private Course course;
 
-    @JsonBackReference
+    @JsonManagedReference
     @ManyToOne
     private Instructor instructor;
 

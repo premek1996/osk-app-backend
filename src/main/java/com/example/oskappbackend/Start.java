@@ -69,8 +69,24 @@ public class Start {
 
         Instructor instructor = Instructor.builder()
                 .mail("mail")
+                .firstName("Jan")
+                .secondName("Kowalski")
                 .build();
         instructorService.createInstructor(instructor);
+
+        Instructor instructor2 = Instructor.builder()
+                .mail("mail")
+                .firstName("Adam")
+                .secondName("Nowak")
+                .build();
+        instructorService.createInstructor(instructor2);
+
+        Instructor instructor3 = Instructor.builder()
+                .mail("mail")
+                .firstName("Piotr")
+                .secondName("Nowak")
+                .build();
+        instructorService.createInstructor(instructor3);
 
         Customer customer = Customer.builder()
                 .mail("mail")
@@ -164,7 +180,6 @@ public class Start {
                 .customer(customer)
                 .instructor(instructor)
                 .startTime(LocalDateTime.now())
-                .endTime(LocalDateTime.now())
                 .locations(locations)
                 .build();
         drivingClassService.createDrivingClass(drivingClass);
@@ -175,7 +190,6 @@ public class Start {
                 .customer(customer)
                 .instructor(instructor)
                 .startTime(LocalDateTime.now().plusDays(2))
-                .endTime(LocalDateTime.now().plusDays(2))
                 .locations(locations)
                 .build();
 
@@ -186,7 +200,6 @@ public class Start {
                 .customer(customer)
                 .instructor(instructor)
                 .startTime(LocalDateTime.now().plusDays(4))
-                .endTime(LocalDateTime.now().plusDays(4))
                 .locations(locations)
                 .build();
 
