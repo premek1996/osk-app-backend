@@ -29,6 +29,12 @@ public class Customer {
     @Column(unique = true)
     private String mail;
 
+    private String firstName;
+
+    private String secondName;
+
+    private String phoneNumber;
+
     @JsonIgnore
     @OneToMany(mappedBy = "customer")
     private Set<Payment> payments;
